@@ -43,7 +43,7 @@ Copy
 4. Set up environment variables:
 Create a `.env` file in the backend directory and add your Google AI API key:
 GOOGLE_AI_API_KEY=your_api_key_here
-Copy
+
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
@@ -51,7 +51,7 @@ cd ../frontend
 Copy
 2. Get Flutter dependencies:
 flutter pub get
-Copy
+
 ## Configuration
 
 - Update the `SQLALCHEMY_DATABASE_URI` in `backend/app.py` if you want to use a different database.
@@ -74,17 +74,16 @@ exit()
 
 
 
-Copy
 2. Start the Flask server:
 python app.py
-Copy
+
 ### Frontend
 
 1. Ensure you have an Android or iOS emulator running, or a physical device connected.
 
 2. Run the Flutter app:
 flutter run
-Copy
+
 ## Usage
 
 - Launch the MindChat app on your mobile device or emulator.
@@ -96,13 +95,7 @@ Copy
 
 This application deals with potentially sensitive mental health information. Ensure proper security measures are implemented before deploying in a production environment.
 
-## Contributing
 
-Contributions to MindChat are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Disclaimer
 
