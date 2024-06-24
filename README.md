@@ -1,91 +1,110 @@
-MindChat Project Documentation
-Overview
-MindChat is a web application that simulates a conversation with a virtual therapist named Dr. Sanchez. The application uses Google's Generative AI model to provide responses to user inputs, focusing on mental health support and therapy.
-Technology Stack
+# MindChat
 
-Backend: Python with Flask
-Database: SQLite with SQLAlchemy ORM
-AI Model: Google's Generative AI (Gemini Pro)
-Frontend: HTML/CSS/JavaScript (assumed, not shown in the provided code)
+MindChat is an AI-powered virtual therapy assistant that simulates conversations with Dr. Sanchez, an expert in psychotherapy. This project aims to provide accessible mental health support through natural language interactions, with a mobile-first approach.
 
-Key Components
-1. Flask Application
-The main application is built using Flask, a lightweight WSGI web application framework in Python.
-2. Database Models
-Two main database models are used:
+## Features
 
-Conversation: Represents a conversation session
-Message: Represents individual messages within a conversation
+- Conversational AI using Google's Generative AI model
+- Persistent conversation storage
+- Cross-platform mobile app interface
+- Therapist persona specializing in stress, depression, and anxiety
 
-3. Google Generative AI Integration
-The application uses Google's Generative AI model "gemini-pro" for generating responses.
-Main Functions
-initialize_model()
-Initializes and returns the Google Generative AI model.
-construct_message(message: str, role: str = 'user') -> dict
-Constructs a message dictionary for the conversation.
-get_model_response(model: genai.GenerativeModel, conversation: List[dict]) -> dict
-Generates a response from the AI model based on the conversation history.
-save_conversation(conversation_data)
-Saves the conversation and its messages to the database.
-load_conversation(conversation_id)
-Loads a conversation from the database based on the conversation ID.
-API Endpoints
-1. Home Page
+## Technology Stack
 
-Route: /
-Method: GET
-Function: index()
-Description: Renders the main page of the application.
+- Backend: Python 3.x with Flask
+- Database: SQLite with SQLAlchemy ORM
+- AI Model: Google Generative AI (Gemini Pro)
+- Frontend: Flutter for cross-platform mobile development
 
-2. Chat Endpoint
+## Prerequisites
 
-Route: /chat
-Method: POST
-Function: chat()
-Description: Handles chat interactions, processes user input, generates AI responses, and manages conversation persistence.
+- Python 3.x
+- pip (Python package manager)
+- Flutter SDK
+- Dart SDK
+- Google Cloud account with Generative AI API access
+- Android Studio or Xcode (for mobile deployment)
 
-Configuration
+## Installation
 
-The application uses environment variables (loaded via dotenv) for configuration.
-SQLite database is used for storing conversations.
-Google Generative AI API key is required for model initialization.
+### Backend Setup
 
-Therapist Persona
-The AI model is given a specific persona (Dr. Sanchez) with the following characteristics:
+1. Clone the repository:
+git clone https://github.com/yourusername/mindchat.git
+cd mindchat/backend
+Copy
+2. Create a virtual environment:
+python -m venv venv
+source venv/bin/activate  # On Windows use venv\Scripts\activate
+Copy
+3. Install the required packages:
+pip install -r requirements.txt
+Copy
+4. Set up environment variables:
+Create a `.env` file in the backend directory and add your Google AI API key:
+GOOGLE_AI_API_KEY=your_api_key_here
+Copy
+### Frontend Setup
 
-Expert in psychotherapy, especially DBT
-20+ years of experience
-Licensed to provide medical advice
-Focuses on stress, depression, and anxiety
-Treats users as mental health patients
-Uses reflection and clarifying questions in responses
+1. Navigate to the frontend directory:
+cd ../frontend
+Copy
+2. Get Flutter dependencies:
+flutter pub get
+Copy
+## Configuration
 
-Error Handling and Logging
+- Update the `SQLALCHEMY_DATABASE_URI` in `backend/app.py` if you want to use a different database.
+- Modify the `THERAPIST_INTRO` constant in `backend/app.py` to change the AI therapist's persona.
+- Update the API endpoint in the Flutter app to point to your backend server.
 
-The application includes basic error handling and logging.
-Errors are caught and returned as JSON responses with a 500 status code.
-Logging is set up to track important events and errors.
+## Running the Application
 
-Running the Application
-To run the application:
+### Backend
 
-Ensure all dependencies are installed.
-Set up the environment variables (including the Google AI API key).
-Run python app.py to start the Flask server.
-The application will run in debug mode on the default Flask port (usually 5000).
+1. Initialize the database:
+python
 
-Database Initialization
-The database tables are automatically created when the application starts, using db.create_all() within the application context.
-Security Considerations
 
-The Google AI API key is directly included in the code, which is not a secure practice. It should be moved to an environment variable.
-Ensure proper security measures are implemented, especially considering the sensitive nature of mental health conversations.
 
-Future Improvements
+from app import app, db
+with app.app_context():
+...     db.create_all()
+exit()
 
-Implement user authentication and session management.
-Enhance error handling and input validation.
-Improve conversation management and persistence.
-Add more robust logging and monitoring.
-Implement frontend features for a better user experience.
+
+
+Copy
+2. Start the Flask server:
+python app.py
+Copy
+### Frontend
+
+1. Ensure you have an Android or iOS emulator running, or a physical device connected.
+
+2. Run the Flutter app:
+flutter run
+Copy
+## Usage
+
+- Launch the MindChat app on your mobile device or emulator.
+- Start a new conversation by tapping the new chat button.
+- Continue existing conversations by selecting from the conversation list.
+- Interact with Dr. Sanchez by typing your messages and receiving AI-generated responses.
+
+## Security Notice
+
+This application deals with potentially sensitive mental health information. Ensure proper security measures are implemented before deploying in a production environment.
+
+## Contributing
+
+Contributions to MindChat are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+MindChat is an AI-based application and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+This README now reflects a project structure with a Flask backend and a Flutter frontend for mobile app development. It includes setup instructions for both t
