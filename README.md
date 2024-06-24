@@ -1,4 +1,3 @@
-Certainly! I'll create documentation for the MindChat project based on the provided code. Here's a comprehensive documentation for the project:
 MindChat Project Documentation
 Overview
 MindChat is a web application that simulates a conversation with a virtual therapist named Dr. Sanchez. The application uses Google's Generative AI model to provide responses to user inputs, focusing on mental health support and therapy.
